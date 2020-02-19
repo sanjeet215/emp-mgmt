@@ -26,13 +26,13 @@ public class Employee {
 	@Column(name = "emplname", nullable = false)
 	String empLsatName;
 
-	@Column(name = "empEmailId", nullable = false)
+	@Column(name = "empEmailId", nullable = true)
 	String empEmailId;
 
-	@Column(name = "nationalId", nullable = false)
+	@Column(name = "nationalId", nullable = true)
 	String nationalId;
 
-	@Column(name = "empGender", nullable = false)
+	@Column(name = "empGender", nullable = true)
 	String empGender;
 
 	Date Dob;
@@ -51,7 +51,7 @@ public class Employee {
 
 	boolean empStatus;
 
-	@Column(name = "gender", nullable = false)
+	@Column(name = "orgid", nullable = false)
 	Long orgId;
 
 	public Long getId() {

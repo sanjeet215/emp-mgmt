@@ -23,7 +23,7 @@ import com.asiczen.emp.mgmt.security.services.OrgSvcImpl;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
-@RequestMapping("/api/org")
+@RequestMapping("/api")
 public class OrganizationController {
 
 	private static final Logger logger = LoggerFactory.getLogger(OrganizationController.class);
@@ -32,7 +32,7 @@ public class OrganizationController {
 	OrgSvcImpl orgService;
 	
 	
-	@PostMapping("/create")
+	@PostMapping("/org/create")
 	@PreAuthorize("hasRole('ADMIN')")
 	public ResponseEntity<Organization> createDepartment(@Valid @RequestBody Organization org){
 		org.setCreatedAt(new Date());
@@ -41,7 +41,7 @@ public class OrganizationController {
 		
 	}
 	
-	@GetMapping("/company")
+	@GetMapping("/org")
 	@PreAuthorize("hasRole('ADMIN')")
 	public ResponseEntity<List<Organization>> getAllCompanies(){
 		return ResponseEntity.status(HttpStatus.OK).body(orgService.getAllOrganization());

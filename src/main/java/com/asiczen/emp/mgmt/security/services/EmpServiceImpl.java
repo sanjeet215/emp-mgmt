@@ -25,6 +25,20 @@ public class EmpServiceImpl {
 		}
 	}
 	
+	/* Add new Employee */
+	
+	public Employee addNewEmployee(Employee emp) {
+		//empRepo.deleteAll();
+		
+		return empRepo.save(emp);
+	}
+	
+	/*Update Employee */
+	
+	/* delete Employee */
+	public void deleteEmployee(Employee emp) {
+		empRepo.delete(emp);
+	}
 	
 	// Add one Employee for Testing
 	
@@ -39,6 +53,8 @@ public class EmpServiceImpl {
 		emp.setEmpGender("test");
 		emp.setOrgId(23L);
 		empRepo.save(emp);
+		
+		
 		
 	}
 	

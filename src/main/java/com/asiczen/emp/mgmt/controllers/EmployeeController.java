@@ -1,6 +1,5 @@
 package com.asiczen.emp.mgmt.controllers;
 
-import java.util.Date;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -34,8 +33,6 @@ public class EmployeeController {
 	@PostMapping("/emp")
 	@PreAuthorize("hasRole('ADMIN')")
 	public ResponseEntity<Employee> createEmployee(@Valid @RequestBody Employee emp){
-//		//org.setCreatedAt(new Date());
-//		org.setUpdatedAt(new Date());
 		return ResponseEntity.status(HttpStatus.CREATED).body(empService.addNewEmployee(emp));
 		
 	}
@@ -43,7 +40,13 @@ public class EmployeeController {
 	@GetMapping("/emp")
 	@PreAuthorize("hasRole('ADMIN') or hasRole('MODERATOR')")
 	public List<Employee> getAllEmployees(){
-		//empService.addEmp();
 		return empService.getAllEmployees();
 	}
+	
+//	@PutMapping("/emp/update")
+//	@PreAuthorize("hasRole('ADMIN') or hasRole('MODERATOR')")
+//	public ResponseEntity<Employee> updateEmployee(@Valid @RequestBody Employee emp){
+//		return ResponseEntity.status(HttpStatus.OK).body(empService.up(emp));
+//		
+//	}
 }

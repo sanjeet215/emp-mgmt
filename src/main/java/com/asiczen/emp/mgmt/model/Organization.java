@@ -1,10 +1,9 @@
 package com.asiczen.emp.mgmt.model;
 
 //public class Organization {
+
 //
 //}
-
-
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -41,8 +40,17 @@ public class Organization extends AuditModel {
 	@Column(nullable = false)
 	private String organizationcontact;
 
-	public Organization(Long id, String organizationDisplayName, String organizationDescription, String organizationLocation,
-			String contactPersonName, String contactEmailId, String organizationcontact) {
+	private String status;
+
+	private String regDate;
+
+	public Organization() {
+		super();
+	}
+
+	public Organization(Long id, String organizationDisplayName, String organizationDescription,
+			String organizationLocation, String contactPersonName, String contactEmailId, String organizationcontact,
+			String status, String regDate) {
 		super();
 		this.id = id;
 		this.organizationDisplayName = organizationDisplayName;
@@ -51,10 +59,8 @@ public class Organization extends AuditModel {
 		this.contactPersonName = contactPersonName;
 		this.contactEmailId = contactEmailId;
 		this.organizationcontact = organizationcontact;
-	}
-
-	public Organization() {
-		super();
+		this.status = status;
+		this.regDate = regDate;
 	}
 
 	public Long getId() {
@@ -65,27 +71,27 @@ public class Organization extends AuditModel {
 		this.id = id;
 	}
 
-	public String getorganizationDisplayName() {
+	public String getOrganizationDisplayName() {
 		return organizationDisplayName;
 	}
 
-	public void setorganizationDisplayName(String organizationDisplayName) {
+	public void setOrganizationDisplayName(String organizationDisplayName) {
 		this.organizationDisplayName = organizationDisplayName;
 	}
 
-	public String getorganizationDescription() {
+	public String getOrganizationDescription() {
 		return organizationDescription;
 	}
 
-	public void setorganizationDescription(String organizationDescription) {
+	public void setOrganizationDescription(String organizationDescription) {
 		this.organizationDescription = organizationDescription;
 	}
 
-	public String getorganizationLocation() {
+	public String getOrganizationLocation() {
 		return organizationLocation;
 	}
 
-	public void setorganizationLocation(String organizationLocation) {
+	public void setOrganizationLocation(String organizationLocation) {
 		this.organizationLocation = organizationLocation;
 	}
 
@@ -105,23 +111,37 @@ public class Organization extends AuditModel {
 		this.contactEmailId = contactEmailId;
 	}
 
-	public String getorganizationcontact() {
+	public String getOrganizationcontact() {
 		return organizationcontact;
 	}
 
-	public void setorganizationcontact(String organizationcontact) {
+	public void setOrganizationcontact(String organizationcontact) {
 		this.organizationcontact = organizationcontact;
 	}
 
-	public static long getSerialversionuid() {
-		return serialVersionUID;
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+	public String getRegDate() {
+		return regDate;
+	}
+
+	public void setRegDate(String regDate) {
+		this.regDate = regDate;
 	}
 
 	@Override
 	public String toString() {
-		return "organization [id=" + id + ", organizationDisplayName=" + organizationDisplayName + ", organizationDescription="
-				+ organizationDescription + ", organizationLocation=" + organizationLocation + ", contactPersonName="
-				+ contactPersonName + ", contactEmailId=" + contactEmailId + ", organizationcontact=" + organizationcontact + "]";
+		return "Organization [id=" + id + ", organizationDisplayName=" + organizationDisplayName
+				+ ", organizationDescription=" + organizationDescription + ", organizationLocation="
+				+ organizationLocation + ", contactPersonName=" + contactPersonName + ", contactEmailId="
+				+ contactEmailId + ", organizationcontact=" + organizationcontact + ", status=" + status + ", regDate="
+				+ regDate + "]";
 	}
 
 }

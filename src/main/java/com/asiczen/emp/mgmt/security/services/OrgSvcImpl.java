@@ -20,7 +20,7 @@ public class OrgSvcImpl {
 	/* Create New Company */
 	public Organization createOrganization(Organization org) {
 		
-		if(orgRepo.existsByorganizationDisplayName(org.getorganizationDisplayName()))
+		if(orgRepo.existsByorganizationDisplayName(org.getOrganizationDisplayName()))
 			throw new ResourceAlreadyExists("Company is already active in DB");
 			
 		return orgRepo.save(org);
@@ -56,12 +56,13 @@ public class OrgSvcImpl {
 
 		return orgRepo.findById(newCompany.getId()).map(company -> {
 
-			company.setorganizationDisplayName(newCompany.getorganizationDisplayName());
+			company.setOrganizationDisplayName(newCompany.getOrganizationDisplayName());
 			company.setContactEmailId(newCompany.getContactEmailId());
-			company.setorganizationcontact(newCompany.getorganizationcontact());
-			company.setorganizationDescription(newCompany.getorganizationDescription());
+			company.setOrganizationcontact(newCompany.getOrganizationcontact());
+			company.setOrganizationDescription(newCompany.getOrganizationDescription());
 			company.setContactPersonName(newCompany.getContactPersonName());
-			company.setorganizationLocation((newCompany.getorganizationLocation()));
+			company.setOrganizationLocation((newCompany.getOrganizationLocation()));
+			company.setStatus(newCompany.getStatus());
 
 			return orgRepo.save(company);
 

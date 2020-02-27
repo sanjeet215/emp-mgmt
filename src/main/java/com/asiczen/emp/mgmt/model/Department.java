@@ -9,7 +9,9 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "Department")
-public class Department {
+public class Department extends AuditModel{
+
+	private static final long serialVersionUID = 3372112708580151248L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)

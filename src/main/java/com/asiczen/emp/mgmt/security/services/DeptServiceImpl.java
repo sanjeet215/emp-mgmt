@@ -52,16 +52,20 @@ public class DeptServiceImpl {
 
 	public Department updateDepartment(Department newDept) {
 
-		if (deptRepo.existsById(newDept.getDeptId())) {
+//		if (deptRepo.existsById(newDept.getDeptId())) {
+//			throw new ResourceNotFoundException("Department " + newDept.getDeptId() + " not found");
+//		}
+		
+		Optional<Department> department = deptRepo.findById(newDept.getDeptId());
+		if (!department.isPresent())
 			throw new ResourceNotFoundException("Department " + newDept.getDeptId() + " not found");
-		}
 
-		return deptRepo.findById(newDept.getDeptId()).map(department -> {
+		return deptRepo.findById(newDept.getDeptId()).map(ndepartment -> {
 
-			department.setDeptName(newDept.getDeptName());
-			department.setDescription(newDept.getDescription());
-			department.setUpdatedAt(new Date());
-			return deptRepo.save(department);
+			ndepartment.setDeptName(newDept.getDeptName());
+			ndepartment.setDescription(newDept.getDescription());
+			ndepartment.setUpdatedAt(new Date());
+			return deptRepo.save(ndepartment);
 
 		}).orElseThrow(() -> new ResourceNotFoundException("CommentId " + "not found"));
 

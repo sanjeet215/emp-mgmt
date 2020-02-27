@@ -3,6 +3,8 @@ package com.asiczen.emp.mgmt.security.services;
 import java.util.List;
 import java.util.Optional;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +18,8 @@ public class OrgSvcImpl {
 
 	@Autowired
 	OrganizationRepository orgRepo;
+	
+	private static final Logger logger = LoggerFactory.getLogger(OrgSvcImpl.class);
 
 	/* Create New Company */
 	public Organization createOrganization(Organization org) {
@@ -50,10 +54,15 @@ public class OrgSvcImpl {
 
 	public Organization updateCompany(Organization newCompany) {
 
-		if (orgRepo.existsById(newCompany.getId())) {
-			throw new ResourceNotFoundException("Company " + newCompany.getId() + " not found");
-		}
+//		if (orgRepo.existsById(newCompany.getId())) {
+//			throw new ResourceNotFoundException("Company " + newCompany.getId() + " not found");
+//		}
 
+		Optional<Organization> organization = orgRepo.findById(newCompany.getId());
+		
+		if (! organization.isPresent())
+			throw new ResourceNotFoundException("Organization with Id :" + newCompany.getId() + " not Found");
+		
 		return orgRepo.findById(newCompany.getId()).map(company -> {
 
 			company.setOrganizationDisplayName(newCompany.getOrganizationDisplayName());
@@ -66,7 +75,7 @@ public class OrgSvcImpl {
 
 			return orgRepo.save(company);
 
-		}).orElseThrow(() -> new ResourceNotFoundException("CommentId " + "not found"));
+		}).orElseThrow(() -> new ResourceNotFoundException("Orgnization Id : "+ newCompany.getId() + "not found"));
 
 	}
 }

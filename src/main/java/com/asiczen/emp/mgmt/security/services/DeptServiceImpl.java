@@ -67,7 +67,7 @@ public class DeptServiceImpl {
 			ndepartment.setUpdatedAt(new Date());
 			return deptRepo.save(ndepartment);
 
-		}).orElseThrow(() -> new ResourceNotFoundException("CommentId " + "not found"));
+		}).orElseThrow(() -> new ResourceNotFoundException("Department ID "+ newDept.getDeptId() + "not found"));
 
 	}
 

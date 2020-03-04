@@ -10,7 +10,9 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "filetable")
-public class FileProp {
+public class FileProp extends AuditModel{
+
+	private static final long serialVersionUID = 6450986469603637211L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)

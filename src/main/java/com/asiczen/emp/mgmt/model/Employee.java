@@ -11,7 +11,9 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "employee")
-public class Employee {
+public class Employee extends AuditModel {
+
+	private static final long serialVersionUID = -7485158457327339250L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -26,13 +28,13 @@ public class Employee {
 	@Column(name = "emplname", nullable = false)
 	String empLsatName;
 
-	@Column(name = "empEmailId", nullable = true)
+	@Column(name = "empEmailId", nullable = false)
 	String empEmailId;
 
-	@Column(name = "nationalId", nullable = true)
+	@Column(name = "nationalId", nullable = false)
 	String nationalId;
 
-	@Column(name = "empGender", nullable = true)
+	@Column(name = "empGender", nullable = false)
 	String empGender;
 
 	Date Dob;
@@ -43,9 +45,20 @@ public class Employee {
 
 	String fatherName;
 
-	String contact_Info;
+	@Column(name = "empPhoneNo", nullable = false)
+	String phoneNo;
 
-	String job_Title;
+	String address;
+
+	String city;
+
+	String country;
+
+	int postalCode;
+
+	String designation;
+
+	String workingLocation;
 
 	String empType;
 
@@ -102,7 +115,13 @@ public class Employee {
 		this.nationalId = nationalId;
 	}
 
-	
+	public String getEmpGender() {
+		return empGender;
+	}
+
+	public void setEmpGender(String empGender) {
+		this.empGender = empGender;
+	}
 
 	public Date getDob() {
 		return Dob;
@@ -136,20 +155,60 @@ public class Employee {
 		this.fatherName = fatherName;
 	}
 
-	public String getContact_Info() {
-		return contact_Info;
+	public String getPhoneNo() {
+		return phoneNo;
 	}
 
-	public void setContact_Info(String contact_Info) {
-		this.contact_Info = contact_Info;
+	public void setPhoneNo(String phoneNo) {
+		this.phoneNo = phoneNo;
 	}
 
-	public String getJob_Title() {
-		return job_Title;
+	public String getAddress() {
+		return address;
 	}
 
-	public void setJob_Title(String job_Title) {
-		this.job_Title = job_Title;
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
+	}
+
+	public String getCountry() {
+		return country;
+	}
+
+	public void setCountry(String country) {
+		this.country = country;
+	}
+
+	public int getPostalCode() {
+		return postalCode;
+	}
+
+	public void setPostalCode(int postalCode) {
+		this.postalCode = postalCode;
+	}
+
+	public String getDesignation() {
+		return designation;
+	}
+
+	public void setDesignation(String designation) {
+		this.designation = designation;
+	}
+
+	public String getWorkingLocation() {
+		return workingLocation;
+	}
+
+	public void setWorkingLocation(String workingLocation) {
+		this.workingLocation = workingLocation;
 	}
 
 	public String getEmpType() {
@@ -176,14 +235,46 @@ public class Employee {
 		this.orgId = orgId;
 	}
 
-	public String getEmpGender() {
-		return empGender;
+	@Override
+	public String toString() {
+		return "Employee [id=" + id + ", empId=" + empId + ", empFirstName=" + empFirstName + ", empLsatName="
+				+ empLsatName + ", empEmailId=" + empEmailId + ", nationalId=" + nationalId + ", empGender=" + empGender
+				+ ", Dob=" + Dob + ", Doj=" + Doj + ", maritalStatus=" + maritalStatus + ", fatherName=" + fatherName
+				+ ", phoneNo=" + phoneNo + ", address=" + address + ", city=" + city + ", country=" + country
+				+ ", postalCode=" + postalCode + ", designation=" + designation + ", workingLocation=" + workingLocation
+				+ ", empType=" + empType + ", empStatus=" + empStatus + ", orgId=" + orgId + "]";
 	}
 
-	public void setEmpGender(String empGender) {
+	public Employee() {
+		super();
+	}
+
+	public Employee(Long id, String empId, String empFirstName, String empLsatName, String empEmailId,
+			String nationalId, String empGender, Date dob, Date doj, String maritalStatus, String fatherName,
+			String phoneNo, String address, String city, String country, int postalCode, String designation,
+			String workingLocation, String empType, boolean empStatus, Long orgId) {
+		super();
+		this.id = id;
+		this.empId = empId;
+		this.empFirstName = empFirstName;
+		this.empLsatName = empLsatName;
+		this.empEmailId = empEmailId;
+		this.nationalId = nationalId;
 		this.empGender = empGender;
+		Dob = dob;
+		Doj = doj;
+		this.maritalStatus = maritalStatus;
+		this.fatherName = fatherName;
+		this.phoneNo = phoneNo;
+		this.address = address;
+		this.city = city;
+		this.country = country;
+		this.postalCode = postalCode;
+		this.designation = designation;
+		this.workingLocation = workingLocation;
+		this.empType = empType;
+		this.empStatus = empStatus;
+		this.orgId = orgId;
 	}
-
-	
 
 }

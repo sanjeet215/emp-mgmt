@@ -32,7 +32,7 @@ public class DepartmentController {
 	DeptServiceImpl deptService;
 	
 	/*Create/Add Department*/
-	@PostMapping("/dept/create")
+	@PostMapping("/dept")
 	@PreAuthorize("hasRole('ADMIN') or hasRole('MODERATOR')")
 	public ResponseEntity<Department> createDepartment(@Valid @RequestBody Department dept){
 		return ResponseEntity.status(HttpStatus.CREATED).body(deptService.createDepartment(dept));

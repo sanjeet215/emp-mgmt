@@ -112,7 +112,7 @@ public class EmpServiceImpl {
 		emp.setEmpEmailId("test@gmail.com");
 		emp.setNationalId("Tetss");
 		emp.setEmpGender("test");
-		emp.setOrgId(23L);
+		emp.setOrgId("testId");
 		empRepo.save(emp);
 		
 		

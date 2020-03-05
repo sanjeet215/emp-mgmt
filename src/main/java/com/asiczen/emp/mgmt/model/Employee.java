@@ -65,7 +65,7 @@ public class Employee extends AuditModel {
 	boolean empStatus;
 
 	@Column(name = "orgid", nullable = false)
-	Long orgId;
+	String orgId;
 
 	public Long getId() {
 		return id;
@@ -227,11 +227,11 @@ public class Employee extends AuditModel {
 		this.empStatus = empStatus;
 	}
 
-	public Long getOrgId() {
+	public String getOrgId() {
 		return orgId;
 	}
 
-	public void setOrgId(Long orgId) {
+	public void setOrgId(String orgId) {
 		this.orgId = orgId;
 	}
 
@@ -252,7 +252,7 @@ public class Employee extends AuditModel {
 	public Employee(Long id, String empId, String empFirstName, String empLsatName, String empEmailId,
 			String nationalId, String empGender, Date dob, Date doj, String maritalStatus, String fatherName,
 			String phoneNo, String address, String city, String country, int postalCode, String designation,
-			String workingLocation, String empType, boolean empStatus, Long orgId) {
+			String workingLocation, String empType, boolean empStatus, String orgId) {
 		super();
 		this.id = id;
 		this.empId = empId;
@@ -277,4 +277,5 @@ public class Employee extends AuditModel {
 		this.orgId = orgId;
 	}
 
+	
 }
